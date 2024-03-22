@@ -1,4 +1,5 @@
 using BasicCRUDApp.Models;
+using BasicCRUDApp.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,17 @@ namespace BasicCRUDApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IRepository repo;
+        public HomeController(IRepository _repo,ILogger<HomeController> logger)
         {
+            repo= _repo;    
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = repo.GetItems();
+            return View(model);
         }
 
         public IActionResult Privacy()
