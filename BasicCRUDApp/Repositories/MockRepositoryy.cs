@@ -9,7 +9,7 @@ namespace BasicCRUDApp.Repositories
     {
 
          private readonly ApplicationDbContext context;
-        private List<Item> items;
+        private readonly List<Item> items;
         public MockRepositoryy(ApplicationDbContext context)
         {
             this.context = context;

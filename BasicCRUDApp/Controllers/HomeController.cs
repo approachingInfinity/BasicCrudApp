@@ -7,12 +7,12 @@ namespace BasicCRUDApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
         private readonly IRepository repo;
-        public HomeController(IRepository _repo,ILogger<HomeController> logger)
+        public HomeController(IRepository _repo)
         {
             repo= _repo;    
-            _logger = logger;
+           // _logger = logger;
         }
 
         public IActionResult Index()
