@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Book
+
+<style>
+    /* Style for the book details container */
+    .book-details {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+
+    /* Style for the book title */
+    .book-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* Style for other book details */
+    .book-info {
+        margin-bottom: 10px;
+    }
+
+        /* Style for labels */
+        .book-info label {
+            font-weight: bold;
+            color: #666;
+        }
+
+        /* Style for values */
+        .book-info .value {
+            color: #333;
+        }
+</style>
+
+<div class="book-details">
+    <div class="book-title">Title</div>
+    <div class="book-info">
+        <label>Author:</label>
+        <span class="value">@Model.Title</span>
+    </div>
+    <div class="book-info">
+        <label>Description:</label>
+        <span class="value">@Model.Description</span>
+    </div>
+    <div class="book-info">
+        <label>ISBN:</label>
+        <span class="value">@Model.ISBN</span>
+    </div>
+    <div class="book-info">
+        <label>Published Date:</label>
+        <span class="value">@Model.PublishedDate.ToShortDateString()</span>
+    </div>
+    <div class="book-info">
+        <label>Price:</label>
+        <span class="value">$@Model.Price</span>
+    </div>
+    <div class="book-info">
+        <label>Pages:</label>
+        <span class="value">@Model.Pages</span>
+    </div>
+</div>

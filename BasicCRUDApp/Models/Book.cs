@@ -1,4 +1,6 @@
-﻿namespace BasicCRUDApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BasicCRUDApp.Models
 {
     public class Book
     {
@@ -20,7 +22,7 @@
   
         public DateTime PublishedDate { get; set; }
 
-      
+        [Range(0, double.MaxValue, ErrorMessage = "Please enter a valid price.")]
         public decimal Price { get; set; }
 
       

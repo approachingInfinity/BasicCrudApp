@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Book>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .book-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+            .book-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .book-title {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .book-details {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .book-link {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+            .book-link:hover {
+                text-decoration: underline;
+            }
+
+        .create-link {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .create-link:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a asp-action="CreateBooks" class="create-link">+ Create</a>
+        <section>
+            @foreach (var book in Model)
+            {
+                <div class="book-card">
+                    <h4 class="book-title">@book.Title</h4>
+                    <p class="book-details">by <span>@book.Author</span> [<span>@book.Pages pages</span>]</p>
+                    <a asp-action="BookDetails" asp-route-id="@book.BookId" class="book-link">Details</a>
+                    <a asp-action="UpdateBook" asp-route-id="@book.BookId">Update</a>
+                    <form asp-action="DeleteBook" asp-route-id="@book.BookId">
+                        Delete
+                    </form>
+                   
+                </div>
+            }
+        </section>
+    </div>
+</body>
+</html>
